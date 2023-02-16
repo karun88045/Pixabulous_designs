@@ -1,23 +1,19 @@
      <?php
      require"Admin/includes/config1.php";
+     require"Admin/includes/config.php";
 
      $str = "";
       ?>
 
         <aside id="primary-sidebar" class="widget-area primary-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12" style=" ">
-            <section id="block-2" class="widget widget_search" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
+           
+        <section id="block-2" class="widget widget_search" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
 
-        <?php
-            if(isset($_GET['Search']))
-            $str = $_GET['search'];
-            $sql = "SELECT * FROM  `post` WHERE title LIKE '%$str%' OR text LIKE '%$str%' OR author LIKE '%$str%'";
-            $query_run1 = mysqli_query($conn,$sql);
-            ?>
-                <form  method="get" action="" style="" enctype="multipart/form-data">
+                <form  method="get" action="blog.php" style="" enctype="multipart/form-data">
                     <!-- <label for="wp-block-search__input-1">Search</label> -->
                     <div class="row" style="padding: 0px 0px 0px 0px;">
                         <div class="col-md-8 col-lg-8 col-sm-12"style="" >
-                            <input type="search" id="wp-block-search__input-1" class="form-control" name="search" value="" placeholder="Search here" required="">
+                            <input type="text" id="wp-block-search__input-1" class="form-control" name="search" value="" placeholder="Search here" required="">
                         </div>
                         <div class="col-md-4 col-lg-4 col-sm-12" style="">
                             <button type="submit" name="Search" class="form-control"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -36,7 +32,7 @@
 
 
 
-                     <?php 
+                    <?php 
                         $sql4 = "SELECT * FROM post left JOIN category ON post.id=category.slugId ORDER BY category DESC limit 5";
                         $query4 = mysqli_query($conn,$sql4);
                         while($row4 = mysqli_fetch_assoc($query4))
@@ -58,11 +54,11 @@
                                     <?php echo $row4['date']?>
                                 </span>
                         </div>
-                    </li>
+                        </li>
                             
                             <?php
                         }
-                        ?>
+                    ?>
                     </ul>
                    
                     </div>
@@ -75,7 +71,7 @@
                     <div class="wp-block-group__inner-container">
                         <h3 class="">Recent Comment</h3>
 
-                           <?php 
+                    <?php 
                         $sql2 = "SELECT * FROM `comment`";
                         $query2 = mysqli_query($conn,$sql2);
                         while($row2 = mysqli_fetch_assoc($query2))
@@ -86,7 +82,7 @@
 
                             <?php
                         }
-                        ?>
+                    ?>
                     </div>
                 </div>
             </section>
