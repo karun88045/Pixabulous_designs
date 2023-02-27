@@ -5,7 +5,7 @@
      $str = "";
       ?>
 
-        <aside id="primary-sidebar" class="widget-area primary-sidebar col-lg-3 col-md-3 col-sm-12 col-xs-12" style=" ">
+        <aside id="primary-sidebar" class="widget-area primary-sidebar " style=" ">
            
         <section id="block-2" class="widget widget_search" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;">
 
@@ -115,7 +115,7 @@
                         ?>
                 </ul>
             </section>
-            <section id="tag_cloud-1" class="widget widget_block py-3">
+            <!-- <section id="tag_cloud-1" class="widget widget_block py-3">
                 <h3>Tags</h3>
                 <div class="tagcloud">
                     <div class="row">
@@ -142,5 +142,5 @@
                     ?> 
                         </div>
                 </div>
-            </section>
+            </section> -->
         </aside>
