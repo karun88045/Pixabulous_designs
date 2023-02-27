@@ -46,237 +46,183 @@ $current_page=1;
 </section>
 
 
-
-<?php
-
-if(isset($_GET['Search']))
-{
-$str = $_GET['search'];
-$sql = "SELECT * FROM  `post` WHERE title LIKE '%$str%' OR text LIKE '%$str%' OR author LIKE '%$str%'";
-$query_run1 = mysqli_query($conn,$sql);
-
-if(mysqli_num_rows($query_run1))
-{
-    while($show_data=mysqli_fetch_assoc($query_run1))
-    {
-?>
 <div class="container">
     <div class="row">
 
-        <div id="primary" class="content-area col-lg-9 col-md-9 col-sm-12 col-xs-12">
-         <main id="main" class="site-main">
 
-                <article id="post-6992" class="post-box masonry-post-item post-6992 post type-post status-publish format-standard has-post-thumbnail hentry category-digital-marketing">
-                
-                    <div class="post-inner">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <div class="entry-media pb-4">
-                                    <div class="post-cat">
-                                        <span class="posted-in">
-                                           
-                                        </span>
+            <?php if(isset($_GET['Search'])) {
+            $str = $_GET['search'];
+            $sql = "SELECT * FROM  `post` WHERE title LIKE '%$str%' OR text LIKE '%$str%' OR author LIKE '%$str%' OR category LIKE '%$str%'";
+            $query_run1 = mysqli_query($conn,$sql);
+            ?>
+            <?php if(mysqli_num_rows($query_run1)) { while($show_data=mysqli_fetch_assoc($query_run1)) { ?>
+
+            <div id="primary" class="content-area col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <main id="main" class="site-main">
+                    <article id="post-6992" class="post-box masonry-post-item post-6992 post type-post status-publish format-standard has-post-thumbnail hentry category-digital-marketing">
+                        <div class="post-inner">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <div class="entry-media pb-4">
+                                        <div class="post-cat">
+                                            <span class="posted-in">
+                                            </span>
+                                        </div>
+                                                <a href="post.php?p_id=<?php echo $show_data['id'] ;?>">
+                                                <img class="img-fluid post-img"
+                                                src="Admin/Upload1/<?php echo $show_data['image'] ;?>" class="img-fluid" style="height: 320px;">
+                                                </a>
                                     </div>
-                                    <a href="post.php?p_id=<?php echo $row['id'] ;?>">
-                                   <img class="img-fluid post-img"
-                                    src="Admin/Upload1/<?php echo $show_data['image'] ;?>" class="img-fluid" style="height: 320px;">
-                                    </a>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <div class="inner-post">
+                                        <div class="entry-header">
+                                            <h3 class="entry-title" style="font-size:19px;">
+                                            <a href="post.php?p_id=<?php echo $show_data['id'] ;?>"
+                                                    rel="bookmark"><?php echo $show_data['title'] ?>
+                                            </a>
+                                            </h3>
+                                        </div><!-- .entry-header -->
+                                        <div class="entry-summary the-excerpt">
+                                                <p style="font-size: 16px;"><?php echo rtrim(substr($show_data['text'], 0,280)) ;?>....</p>
+                                        </div><!-- .entry-content -->
+
+
+                                            <div class="entry-meta pb-3">
+                                                <span class="posted-on">_
+                                                    <a href="#"
+                                                        rel="bookmark">
+                                                        <time class="entry-date" datetime="2022-12-22T17:55:46+00:00">
+                                                            <?php echo $show_data['date'] ?>
+                                                        </time>
+                                                    </a>
+                                                </span>
+                                                <span class="byline">_
+                                                    <a class="url fn n"
+                                                        href="blog_php_wordpress.php"><?php echo $show_data['author'] ?>
+                                                    </a>
+                                                </span>
+                                                <span class="comment-num">_
+                                                    
+                                                </span>
+                                            </div><!-- .entry-meta -->
+                                            <div class="btn-readmore">
+                                                    <a href="post.php?p_id=<?php echo $show_data['id'] ?>" rel="category tag">Read More</a>
+                                            <!-- <a href="blog_php_wordpress.php">Read More</a> -->
+                                                    <!-- <i class="fa-solid fa-arrow-right" style="color:#43baff;"></i> -->
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <div class="inner-post">
 
+                        </div>
+                    </article>
+                </main><!-- #main -->
+            </div>
 
-                                <div class="entry-header">
-                                <h3 class="entry-title" style="font-size:19px;">
-                                    <a href="post.php?p_id=<?php echo $show_data['id'] ;?>"
-                                        rel="bookmark"><?php echo $show_data['title'] ?>
-                                    </a>
-                                </h3>
-                                </div><!-- .entry-header -->
+            <?php } } ?> 
+            <?php } else { ?>
 
-                                <div class="entry-summary the-excerpt">
-                                 <p style="font-size: 16px;"><?php echo rtrim(substr($show_data['text'], 0,280)) ;?>....</p>
-                                </div><!-- .entry-content -->
-
-
-                                <div class="entry-meta pb-3">
-                                    <span class="posted-on">_
-                                        <a href="#"
-                                            rel="bookmark">
-                                            <time class="entry-date" datetime="2022-12-22T17:55:46+00:00">
-                                                <?php echo $show_data['date'] ?>
-                                            </time>
+            <div id="primary" class="content-area col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <main id="main" class="site-main">
+                    <article id="post-6992" class="post-box masonry-post-item post-6992 post type-post status-publish format-standard has-post-thumbnail hentry category-digital-marketing">
+                            <?php 
+                            $sql = "SELECT * FROM `post` limit $start,$per_page";
+                            $query_run = mysqli_query($conn,$sql);
+                            if(mysqli_num_rows($query_run)>0)
+                            {
+                            while($row = mysqli_fetch_assoc($query_run))
+                            {
+                            ?>
+                        <div class="post-inner">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <div class="entry-media pb-4">
+                                        <div class="post-cat">
+                                         <span class="posted-in">
+                                          </span>
+                                        </div>
+                                        <a href="post.php?p_id=<?php echo $row['id'] ;?>">
+                                        <img class="img-fluid post-img"
+                                                src="Admin/Upload1/<?php echo $row['image'] ;?>" class="img-fluid" style="height: 320px;">
                                         </a>
-                                    </span>
-                                    <span class="byline">_
-                                        <a class="url fn n"
-                                            href="blog_php_wordpress.php"><?php echo $show_data['author'] ?>
-                                        </a>
-                                    </span>
-                                    <span class="comment-num">_
-                                       
-                                    </span>
-                                </div><!-- .entry-meta -->
-                                <div class="btn-readmore">
-                                     <a href="post.php?p_id=<?php echo $show_data['id'] ?>" rel="category tag">Read More</a>
-                                <!-- <a href="blog_php_wordpress.php">Read More</a> -->
-                                     <!-- <i class="fa-solid fa-arrow-right" style="color:#43baff;"></i> -->
+                                    </div>
                                 </div>
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <div class="inner-post">
+                                        <div class="entry-header">
+                                            <h3 class="entry-title" style="font-size:19px;">
+                                            <a href="post.php?p_id=<?php echo $row['id'] ;?>"
+                                                    rel="bookmark"><?php echo $row['title'] ?>
+                                            </a>
+                                            </h3>
+
+                                            <div class="entry-summary the-excerpt">
+                                                <p style="font-size: 16px;"><?php echo rtrim(substr($row['text'], 0,280)) ;?>....</p>
+                                            </div><!-- .entry-content -->
+
+
+                                            <div class="entry-meta pb-3">
+                                                <span class="posted-on">_
+                                                    <a href="#"
+                                                        rel="bookmark">
+                                                        <time class="entry-date" datetime="2022-12-22T17:55:46+00:00">
+                                                            <?php echo $row['date'] ?>
+                                                        </time>
+                                                    </a>
+                                                </span>
+                                                <span class="byline">_
+                                                    <a class="url fn n"
+                                                        href="blog_php_wordpress.php"><?php echo $row['author'] ?>
+                                                    </a>
+                                                </span>
+                                                <span class="comment-num">_
+                                                </span>
+                                            </div><!-- .entry-meta -->
+                                            <div class="btn-readmore">
+                                                <a href="post.php?p_id=<?php echo $row['id'] ?>" rel="category tag">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-
-                    </div>
-                </article>
-
-         </main><!-- #main -->
-
-            
-        </div>
-<?php include"sidebar.php";?>
-<ul class="pagination">
-<?php
-    for($i=1;$i<=$page;$i++) 
-    {
-        $class="";
-        if($current_page==$i)
-        {
-            $class="active";
-        }
-        ?>
-        
-        <li class="page-item <?php echo $class ;?>">
-            <a class="page-link" href="?start=<?php echo $i  ;?>"><?php echo $i  ;?></a>
-        </li>
-
-        <?php
-    }
-?>
-    </ul>
-
-    </div>
-</div>
-<?php
-        
-    }
-}
-}
-
-else
-{
-    ?>
-    <div class="container">
-    <div class="row">
-
-        <div id="primary" class="content-area col-lg-9 col-md-9 col-sm-12 col-xs-12">
-         <main id="main" class="site-main">
-
-                <article id="post-6992" class="post-box masonry-post-item post-6992 post type-post status-publish format-standard has-post-thumbnail hentry category-digital-marketing">
-                <?php 
-                $sql = "SELECT * FROM `post` limit $start,$per_page";
-                $query_run = mysqli_query($conn,$sql);
-                if(mysqli_num_rows($query_run)>0)
-                {
-                while($row = mysqli_fetch_assoc($query_run))
-                {
-                ?>
-                    <div class="post-inner">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <div class="entry-media pb-4">
-                                    <div class="post-cat">
-                                        <span class="posted-in">
-                                           
-                                        </span>
-                                    </div>
-                                    <a href="post.php?p_id=<?php echo $row['id'] ;?>">
-                                   <img class="img-fluid post-img"
-                                    src="Admin/Upload1/<?php echo $row['image'] ;?>" class="img-fluid" style="height: 320px;">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-sm-12">
-                                <div class="inner-post">
+                                <?php
+                            }
+                                }
+                                ?>
+                    </article>
+                </main><!-- #main --> 
+            </div>
+            <?php } ?>
 
 
-                                <div class="entry-header">
-                                <h3 class="entry-title" style="font-size:19px;">
-                                    <a href="post.php?p_id=<?php echo $row['id'] ;?>"
-                                        rel="bookmark"><?php echo $row['title'] ?>
-                                    </a>
-                                </h3>
-                                </div><!-- .entry-header -->
+            <div class=" col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <?php include"sidebar.php";?>
+            </div>
 
-                                <div class="entry-summary the-excerpt">
-                                 <p style="font-size: 16px;"><?php echo rtrim(substr($row['text'], 0,280)) ;?>....</p>
-                                </div><!-- .entry-content -->
-
-
-                                <div class="entry-meta pb-3">
-                                    <span class="posted-on">_
-                                        <a href="#"
-                                            rel="bookmark">
-                                            <time class="entry-date" datetime="2022-12-22T17:55:46+00:00">
-                                                <?php echo $row['date'] ?>
-                                            </time>
-                                        </a>
-                                    </span>
-                                    <span class="byline">_
-                                        <a class="url fn n"
-                                            href="blog_php_wordpress.php"><?php echo $row['author'] ?>
-                                        </a>
-                                    </span>
-                                    <span class="comment-num">_
-                                       
-                                    </span>
-                                </div><!-- .entry-meta -->
-                                <div class="btn-readmore">
-                                     <a href="post.php?p_id=<?php echo $row['id'] ?>" rel="category tag">Read More</a>
-                                <!-- <a href="blog_php_wordpress.php">Read More</a> -->
-                                     <!-- <i class="fa-solid fa-arrow-right" style="color:#43baff;"></i> -->
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <?php
-                }
-                    }
-                    ?>
-                </article>
-
-         </main><!-- #main -->
-
-            
-        </div>
-<?php include"sidebar.php";?>
-<ul class="pagination">
-<?php
-    for($i=1;$i<=$page;$i++) 
-    {
-        $class="";
-        if($current_page==$i)
-        {
-            $class="active";
-        }
-        ?>
-        
-        <li class="page-item <?php echo $class ;?>">
-            <a class="page-link" href="?start=<?php echo $i  ;?>"><?php echo $i  ;?></a>
-        </li>
-
-        <?php
-    }
-?>
-    </ul>
-
-    </div>
-</div>
+    <ul class="pagination">
     <?php
-}
-?>
+    for($i=1;$i<=$page;$i++) 
+    {
+    $class="";
+    if($current_page==$i)
+    {
+    $class="active";
+    }
+    ?>
+
+    <li class="page-item <?php echo $class ;?>">
+    <a class="page-link" href="?start=<?php echo $i  ;?>"><?php echo $i  ;?></a>
+    </li>
+
+    <?php
+    }
+    ?>
+</ul>
+    </div>
+</div>
 
 <!--- Call To Action section end --->
 <?php include"footer.php";?>
