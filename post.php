@@ -171,9 +171,9 @@ a.post-img {
                 </article>
             </main><!-- #main -->
         </div>
-
-
-        <?php include"sidebar.php"; ?>
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <?php include"sidebar.php"; ?>
+        </div>
 
     </div>
 </div>
